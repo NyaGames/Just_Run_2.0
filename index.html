@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Just Run</title>
+        <script src="script/phaser.js"></script>
+        <script src="src/states/boot.js"></script>
+        <script src="script/nivel.js"></script>
+        <script src="script/chaser.js"></script>
+        <script src="script/escapist.js"></script>
+        <script src="script/entrada.js"></script>
+        <script src="script/trampas.js"></script>
+        <script src="script/audio.js"></script>
+        <script src="script/timer.js"></script>
+        <script src="src/states/nivelNieve.js"></script>
+        <script src="src/states/carga_nivelNieve.js"></script>
+        <script src="src/states/nivelCastillo.js"></script>
+        <script src="src/states/carga_nivelCastillo.js"></script>
+        <script src="src/states/carga_menu.js"></script>
+        <script src="src/states/menu.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+         <style type="text/css">
+         	#Just_Run{
+         		position: absolute;
+         		z-index: 0;
+         		margin-left: 230px;
+         	}
+         </style>
+    </head>
+    <body>
+    <script type="text/javascript">
+    //crear el juego y los diversos estados que se van a usar en el mismo, iniciando en el estado "boot"
+        var game = new Phaser.Game(1068, 600, Phaser.AUTO, 'Just_Run');
+
+        game.state.add('boot', JustRun.bootState,true);
+        game.state.add('cargaMenu', JustRun.cargaMenu, true);
+        game.state.add('cargaNieve', JustRun.carga_nivelNieve, true);
+        game.state.add('cargaCastillo', JustRun.carga_nivelCastillo, true);
+        game.state.add('menu', JustRun.menu, true);
+        game.state.add('nieve', JustRun.nivelNieve, true);
+        game.state.add('castillo', JustRun.nivelCastillo, true);    
+    
+        game.state.start('boot');    	
+    </script>
+    <div id="Just_Run"></div>
+    </body>
+</html>
