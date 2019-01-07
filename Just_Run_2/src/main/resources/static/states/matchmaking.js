@@ -15,6 +15,11 @@ JustRun.matchmakingState.prototype = {
 		    pantallacarga.scale.setTo(0.2,0.2);
 			var loading = pantallacarga.animations.add('load');
 			pantallacarga.animations.play('load', 26, true);
+
+		    data = {
+		        type: 'JOIN'
+		    }
+		    ws.send(JSON.stringify(data))
 		},
 		update: function(){
 			data = {

@@ -31,8 +31,4 @@ class Escapist{
         escapist.anchor.setTo(0.3,0.5);
         return escapist;
     }
-     mover(x, y){
-    	 escapist.position.x = x;
-    	 escapist.position.y = y;
-     }
 }

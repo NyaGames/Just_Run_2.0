@@ -78,7 +78,7 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 				json.put("size", gameController.getPlayers().size());
 				session.sendMessage(new TextMessage(json.toString()));
 				break;
-			case "LEVELCHASER":
+			case "LEVELESCAPIST":
 				players = gameController.getPlayers();				
 				chaser = players.iterator().next();
 				json.put("type", 'l');
@@ -87,18 +87,16 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 				json.put("score", chaser.getScore());
 				session.sendMessage(new TextMessage(json.toString()));
 				break;
-			case "LEVELESCAPIST":
-				final Iterator<Player> itr = players.iterator();
+			case "LEVELCHASER":
+				/*final Iterator<Player> itr = players.iterator();
 		        Player lastElement = itr.next();
 		        while(itr.hasNext()) {
-		            lastElement=itr.next();
+		        	lastElement=itr.next();
 		        }
 		        escapist = lastElement;
-		        json.put("type", 'k');
-		        json.put("x", escapist.getX());
-				json.put("y", escapist.getY());
-				json.put("score", escapist.getScore());
-				session.sendMessage(new TextMessage(json.toString()));
+				escapist.setX(node.get("x").asInt());
+				escapist.setY(node.get("y").asInt());
+				System.out.println(escapist.toString());*/
 				break;
 			case "CHASER":
 				players = gameController.getPlayers();				

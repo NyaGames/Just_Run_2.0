@@ -13,11 +13,6 @@ ws.onopen = function (event) {
     if (debug.ws) {
         console.log('[DEBUG-WS] Se ha establecido conexion con el servidor.')
     }
-    data = {
-        type: 'JOIN'
-    }
-    this.send(JSON.stringify(data))
-
 }
 
 // Un monitor de eventos que es llamado cuando un error ocurre. Esto es un evento simple llamado "error"
@@ -66,10 +61,10 @@ ws.onmessage = function (message) {
         	}
         	break;
         case 107:
-        	
+            //Nieve.mover(escapist, msg.x, msg.y);
         	break;
         case 108:
-        	
+        	Nieve.mover(chaser, msg.x, msg.y);
         	break;
     }
 }

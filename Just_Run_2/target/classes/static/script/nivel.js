@@ -140,4 +140,15 @@ class Nivel{
             break;
         }
     }
+    mover(objeto, x, y){
+    	if(objeto.position.x < x){
+    		objeto.scale.setTo(1,1);
+    		objeto.animations.play("run");
+    	}else if(objeto.position.x > x){
+    		objeto.scale.setTo(-1,1);
+    		objeto.animations.play("run");
+    	}
+    	objeto.position.x = x;
+    	objeto.position.y = y;
+    }
 }
