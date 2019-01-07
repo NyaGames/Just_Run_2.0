@@ -98,7 +98,7 @@ JustRun.menu.prototype = {
 	seleccion: function(estado){
 		switch(estado){
 			case 1:
-				game.state.start("matchmaking");
+				game.state.start("tutorial");
 			break;
 			case 2:
 			break;

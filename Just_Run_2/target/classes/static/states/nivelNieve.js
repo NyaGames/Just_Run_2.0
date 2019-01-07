@@ -22,8 +22,32 @@ JustRun.nivelNieve.prototype = {
         if(timer.running){
             timer.render();
             Nieve.colisiones(Nieve,chaser,escapist);
-            entrada.mover(chaser, Nieve);
-            entrada.mover(escapist, Nieve);
+            if(JustRun_userID == 1){
+            	data = {
+                    	type: 'LEVELCHASER'
+                }
+                ws.send(JSON.stringify(data));
+                entrada.mover(chaser, Nieve);
+                data = {
+                		type: 'CHASER',
+                		x: chaser.position.x,
+                		y: chaser.position.y,
+                }
+                ws.send(JSON.stringify(data));
+            }
+            if(JustRun_userID == 2){
+            	data = {
+                    	type: 'LEVELESCAPIST'
+                    }
+                ws.send(JSON.stringify(data));
+                entrada.mover(escapist, Nieve);
+                data = {
+                		type: 'ESCAPIST',
+                		x: escapist.position.x,
+                		y: escapist.position.y,
+                }
+                ws.send(JSON.stringify(data));
+            }
             trampas.trapsHandler(entrada, Nieve);
             if(Nieve.catched){
                 timer.endTimer();

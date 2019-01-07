@@ -56,9 +56,20 @@ ws.onmessage = function (message) {
             console.log('score: ' + msg.score)
             break
         case 103:
-        	if(msg.size == 2){
+        	if(msg.size == 1){
+        		JustRun_userID = 1;
+        	}else if(msg.size == 2){
+        		if(JustRun_userID == -1){
+        			JustRun_userID = 2;
+        		}
         		game.state.start("cargaNieve");
         	}
+        	break;
+        case 107:
+        	
+        	break;
+        case 108:
+        	
         	break;
     }
 }

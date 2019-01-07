@@ -1,5 +1,5 @@
 JustRun.matchmakingState = function(game){
-
+	JustRun_userID = -1;
 }
 JustRun.matchmakingState.prototype = {
 		//carga la imagen de busqueda

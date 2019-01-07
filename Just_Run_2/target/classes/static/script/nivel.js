@@ -7,17 +7,20 @@ class Nivel{
     crear(id){
         switch(id){
             case Menu:
-            id.width = 1068;
-            id.height = 600;
-            id.background = game.add.sprite(0,0,'menu');
+	            id.width = 1068;
+	            id.height = 600;
+	            id.background = game.add.sprite(0,0,'menu');
             break;
             case Ayuda:
-            id.background = game.add.sprite(0,0,'fondoayuda');
+            	id.background = game.add.sprite(0,0,'fondoayuda');
+            break;
+            case Tutorial:
+            	id.background = game.add.sprite(0,0, 'tutorial');
             break;
             case Nieve:
-            id.width = 1068;
-            id.height = 600;
-            id.background = game.add.sprite(0,0,'snowfield');
+	            id.width = 1068;
+	            id.height = 600;
+	            id.background = game.add.sprite(0,0,'snowfield');
             break;
         }
     }

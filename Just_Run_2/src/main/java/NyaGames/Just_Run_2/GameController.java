@@ -12,7 +12,6 @@ public class GameController {
 	public Collection<Player> getPlayers() {
 		return players.values();
 	}
-
 	public Player newChaser() {
 		Player player = new Player();
 		long id = nextId.incrementAndGet();

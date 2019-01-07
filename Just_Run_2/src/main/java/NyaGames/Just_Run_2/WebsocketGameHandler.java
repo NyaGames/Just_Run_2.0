@@ -3,6 +3,7 @@ package NyaGames.Just_Run_2;
 import java.util.Collections;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -22,6 +23,7 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 	ObjectMapper mapper = new ObjectMapper();
 	boolean debug = true;
 	GameController gameController = new GameController();
+	Collection<Player> players;
 
 	// Invoked after WebSocket negotiation has succeeded and the WebSocket
 	// connection is opened and ready for use.
@@ -43,10 +45,12 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 			JsonNode node = mapper.readTree(message.getPayload());
 			ObjectNode json = mapper.createObjectNode();
 			
+			Player chaser;
+			Player escapist;
 			switch (node.get("type").asText()) {
 			case "JOIN":
 				if (gameController.getPlayers().size() == 0) {
-					Player chaser = gameController.newChaser();
+					chaser = gameController.newChaser();
 
 					ObjectNode jsonChaser = mapper.createObjectNode();
 					jsonChaser.put("type", chaser.getType());
@@ -57,7 +61,7 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 					
 					session.sendMessage(new TextMessage(jsonChaser.toString()));
 				}else if (gameController.getPlayers().size() == 1) {
-					Player escapist = gameController.newEscapist();
+					escapist = gameController.newEscapist();
 
 					ObjectNode jsonEscapist = mapper.createObjectNode();
 					jsonEscapist.put("type", escapist.getType());
@@ -73,6 +77,46 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 				json.put("type", 'g');
 				json.put("size", gameController.getPlayers().size());
 				session.sendMessage(new TextMessage(json.toString()));
+				break;
+			case "LEVELCHASER":
+				players = gameController.getPlayers();				
+				chaser = players.iterator().next();
+				json.put("type", 'l');
+				json.put("x", chaser.getX());
+				json.put("y", chaser.getY());
+				json.put("score", chaser.getScore());
+				session.sendMessage(new TextMessage(json.toString()));
+				break;
+			case "LEVELESCAPIST":
+				final Iterator<Player> itr = players.iterator();
+		        Player lastElement = itr.next();
+		        while(itr.hasNext()) {
+		            lastElement=itr.next();
+		        }
+		        escapist = lastElement;
+		        json.put("type", 'k');
+		        json.put("x", escapist.getX());
+				json.put("y", escapist.getY());
+				json.put("score", escapist.getScore());
+				session.sendMessage(new TextMessage(json.toString()));
+				break;
+			case "CHASER":
+				players = gameController.getPlayers();				
+				chaser = players.iterator().next();
+				chaser.setX(node.get("x").asInt());
+				chaser.setY(node.get("y").asInt());
+				System.out.println(chaser.toString());
+				break;
+			case "ESCAPIST":
+				final Iterator<Player> it = players.iterator();
+		        Player lastelement = it.next();
+		        while(it.hasNext()) {
+		        	lastelement=it.next();
+		        }
+		        escapist = lastelement;
+				escapist.setX(node.get("x").asInt());
+				escapist.setY(node.get("y").asInt());
+				System.out.println(escapist.toString());
 				break;
 			default:
 				break;
