@@ -55,5 +55,10 @@ ws.onmessage = function (message) {
             console.log('pos: (' + msg.x + ',' + msg.y + ')')
             console.log('score: ' + msg.score)
             break
+        case 103:
+        	if(msg.size == 2){
+        		game.state.start("cargaNieve");
+        	}
+        	break;
     }
 }

@@ -69,7 +69,11 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 					session.sendMessage(new TextMessage(jsonEscapist.toString()));					
 				} 
 				break;
-
+			case "GET":
+				json.put("type", 'g');
+				json.put("size", gameController.getPlayers().size());
+				session.sendMessage(new TextMessage(json.toString()));
+				break;
 			default:
 				break;
 			}

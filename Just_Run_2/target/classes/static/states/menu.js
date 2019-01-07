@@ -98,13 +98,14 @@ JustRun.menu.prototype = {
 	seleccion: function(estado){
 		switch(estado){
 			case 1:
-				game.state.start("cargaNieve");
+				game.state.start("matchmaking");
 			break;
 			case 2:
 			break;
 			case 3:
 			break;
-			case 4:
+            case 4:
+                game.state.start("ayuda");
 			break;
 		}
 	},

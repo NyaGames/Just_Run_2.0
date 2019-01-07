@@ -18,6 +18,9 @@
         <script src="states/carga_nivelCastillo.js"></script>
         <script src="states/carga_menu.js"></script>
         <script src="states/menu.js"></script>
+        <script src="states/matchmaking.js"></script>
+        <script src="states/tutorial.js"></script>
+        <script src="states/ayuda.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <style type="text/css">
          	#Just_Run{
@@ -33,6 +36,8 @@
         var game = new Phaser.Game(1068, 600, Phaser.AUTO, 'Just_Run');
 
         game.state.add('boot', JustRun.bootState,true);
+        game.state.add('ayuda', JustRun.ayudaState, true);
+        game.state.add('matchmaking', JustRun.matchmakingState, true);
         game.state.add('cargaMenu', JustRun.cargaMenu, true);
         game.state.add('cargaNieve', JustRun.carga_nivelNieve, true);
         game.state.add('cargaCastillo', JustRun.carga_nivelCastillo, true);

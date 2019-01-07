@@ -5,13 +5,18 @@ class Nivel{
     }
     //sentamos el tamaño y el fondo del nivel
     crear(id){
-        id.width = 1068;
-        id.height = 600;
         switch(id){
             case Menu:
+            id.width = 1068;
+            id.height = 600;
             id.background = game.add.sprite(0,0,'menu');
             break;
+            case Ayuda:
+            id.background = game.add.sprite(0,0,'fondoayuda');
+            break;
             case Nieve:
+            id.width = 1068;
+            id.height = 600;
             id.background = game.add.sprite(0,0,'snowfield');
             break;
         }
@@ -24,6 +29,13 @@ class Nivel{
                 id.salir = game.add.sprite(320, 400, 'salirp');
                 id.opciones = game.add.sprite(960, 500, 'opcionesp');	
                 id.ayuda = game.add.sprite(50, 520, 'ayudap');	
+            break;
+            case Ayuda:            
+                id.infonieve = game.add.sprite(-2000,0,'infonieve');
+                id.infocastillo = game.add.sprite(-2000,0,'infocastillo');
+                id.infodesierto = game.add.sprite(-2000,0,'infodesierto');
+                id.infooceano = game.add.sprite(-2000,0,'infooceano');
+                id.infovolcan = game.add.sprite(-2000,0,'infovolcan');
             break;
             case Nieve:
                 this.ground = game.add.group();

@@ -10,6 +10,7 @@ class Entrada{
 		        Phaser.Keyboard.O,
                 Phaser.Keyboard.P,
                 Phaser.Keyboard.ENTER,
+                Phaser.Keyboard.ESC,
 		    ]);
     }
     //controles con las flechas y devuelven un bool en caso de que este activo	
@@ -61,6 +62,11 @@ class Entrada{
         isActive = game.input.keyboard.isDown(Phaser.Keyboard.ENTER, duration);
         return isActive;
     }    
+    EscapeInputIsActive(duration){
+        var isActive = false;
+        isActive = game.input.keyboard.isDown(Phaser.Keyboard.ESC, duration);
+        return isActive;
+    } 
     mover(objeto, id){
         if(id.onTheGround){
             objeto.saltos = 2;
