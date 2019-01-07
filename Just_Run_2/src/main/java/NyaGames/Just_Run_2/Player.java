@@ -5,6 +5,7 @@ public class Player {
 	private char type;
 	private int x, y;
 	private int score;
+	private boolean cazado;
 
 	Player() {
 		this.score = 0;
@@ -46,6 +47,12 @@ public class Player {
 	}
 	public void setType(char c) {
 		this.type = c;
+	}
+	public boolean getCazado() {
+		return cazado;
+	}
+	public void setCazado(boolean c) {
+		this.cazado = c;
 	}
 	@Override
 	public String toString() {

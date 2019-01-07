@@ -20,6 +20,10 @@ JustRun.nivelNieve.prototype = {
     },
     update: function(){
         if(timer.running){
+        	data = {
+        			type: 'CAMBIO'
+        	}
+        	ws.send(JSON.stringify(data))
             timer.render();
             Nieve.colisiones(Nieve,chaser,escapist);
             if(JustRun_userID == 1){
@@ -32,6 +36,8 @@ JustRun.nivelNieve.prototype = {
                 		type: 'CHASER',
                 		x: chaser.position.x,
                 		y: chaser.position.y,
+                		score: 0,
+                		cazado: false,
                 }
                 ws.send(JSON.stringify(data));
             }
@@ -50,7 +56,16 @@ JustRun.nivelNieve.prototype = {
             }
             trampas.trapsHandler(entrada, Nieve);
             if(Nieve.catched){
+            	 data = {
+                 		type: 'CHASER',
+                 		x: chaser.position.x,
+                 		y: chaser.position.y,
+                 		score: 1,
+                 		cazado: true,
+                 }
+            	 ws.send(JSON.stringify(data));
                 timer.endTimer();
+                console.log(data.score);
             }
         }else{
             game.state.start("cargaCastillo")

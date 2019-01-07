@@ -38,6 +38,11 @@ ws.onmessage = function (message) {
     console.log('INFO RECIBIDA ' + msg.type)
 
     switch (msg.type) {
+    	case 97:
+    		if(msg.cazado){
+    			timer.endTimer();
+    		}
+    		break;
         case 99:
             console.log('@@@@@@ Chaser CREATED @@@@@')
             console.log('id: ' + msg.id)
