@@ -185,7 +185,7 @@ _Pantalla de carga de búsqueda de partida_
 Todos los submenús tienen un botón que nos permite acceder de nuevo al menú principal.
 		
 <p align="center">
-  <img src="https://github.com/NyaGames/Just-Run/blob/master/images/MenuPrincipa.png">
+  <img src="https://github.com/NyaGames/Just_Run_2.0/blob/master/Just_Run_2/src/main/resources/static/assets/fondos/MenuPrincipal.png">
 </p>
 	
 _Interfaz Menú Principal_
@@ -213,7 +213,7 @@ Dentro de los niveles la interfaz es minima, simplemente habrá representación 
 
 Una partida de _Just Run_ se desarrollará de la siguiente manera: 
 <p align="center">
-  <img src="https://github.com/NyaGames/Just-Run/blob/master/images/Escenas.png">
+  <img src="https://github.com/NyaGames/Just_Run_2.0/blob/master/Just_Run_2/src/main/resources/static/assets/fondos/Escenas.png">
 </p>
 _Escenas y rondas_  
 
@@ -221,18 +221,18 @@ _Escenas y rondas_
 Dependiendo del jugador que gane en cada ronda, se mostrará una pantalla que indicará quien se lleva el punto de la ronda y que a su vez servirá como pantalla de carga entre rondas.  
 Esas pantallas son:  
 <p align="center">
-  <img src="https://github.com/NyaGames/Just-Run/blob/master/images/Cazado.png">
+  <img src="https://github.com/NyaGames/Just_Run_2.0/blob/master/Just_Run_2/src/main/resources/static/assets/fondos/Cazado.png">
 </p>  
 <p align="center">
-  <img src="https://github.com/NyaGames/Just-Run/blob/master/images/Libre.png">
+  <img src="https://github.com/NyaGames/Just_Run_2.0/blob/master/Just_Run_2/src/main/resources/static/assets/fondos/Libre.png">
 </p>  
 	
 Cuando acaba la partida, se mostrará una pantalla que indicará quien es el ganador de esta, y se representará con las siguientes imagenes.  
 <p align="center">
-  <img src="https://github.com/NyaGames/Just-Run/blob/master/images/Victoria.png">
+  <img src="https://github.com/NyaGames/Just_Run_2.0/blob/master/Just_Run_2/src/main/resources/static/assets/fondos/Victoria.png">
 </p>  
 <p align="center">
-  <img src="https://github.com/NyaGames/Just-Run/blob/master/images/VictoriaEscapist.png">
+  <img src="https://github.com/NyaGames/Just_Run_2.0/blob/master/Just_Run_2/src/main/resources/static/assets/fondos/VictoriaEscapist.png">
 </p> 
   
 # 4. Arte
@@ -246,7 +246,7 @@ Como ya se ha indicado anteriormente, _Just Run_ es un juego en scroll lateral 2
 El _Pixel Art_ se utilizara principalmente para los fondos y los objetos del escenario con el objetivo de conseguir una mayor cantidad de detalle y de sentar una importante diferencia de estilo con los personajes. Esto ayuda a que los jugadores sepan en todo momento donde estan sus avatares.
 		
 <p align="center">
-  <img src="https://github.com/NyaGames/Just-Run/blob/master/images/fondo%201.png">
+  <img src="https://github.com/NyaGames/Just_Run_2.0/blob/master/Just_Run_2/src/main/resources/static/assets/fondos/nieveoscuro.png">
 </p>	
 
 A parte de esta diferencia de estilo, se usarán dos paletas distintas para personajes y escenarios, una más brillante para los personajes y otra más apagada para los escenarios.
