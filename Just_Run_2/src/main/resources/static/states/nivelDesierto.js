@@ -69,7 +69,7 @@ JustRun.nivelDesierto.prototype = {
             audio.cambio();
             Desierto.chaser.destroy();
             Desierto.escapist.destroy();
-            game.state.start("cargaDesierto")
+            game.state.start("cargaOceano")
         }
     },
 }

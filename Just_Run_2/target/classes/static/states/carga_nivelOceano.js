@@ -20,6 +20,6 @@ JustRun.carga_nivelOceano.prototype = {
 		game.load.audio('song', 'assets/music/oceano.mp3');	
     },
     create: function(){	
-        game.state.start('desierto');
+        game.state.start('oceano');
     }
 }

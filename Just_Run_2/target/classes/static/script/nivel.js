@@ -35,6 +35,11 @@ class Nivel{
                 id.height = 600;
                 id.background = game.add.sprite(0,0,'fondo');
             break;
+            case Oceano:
+            	id.width = 1068;
+                id.height = 600;
+                id.background = game.add.sprite(0,0,'sea');
+            break;
         }
     }
     //creamos las plataformas del nivel
@@ -500,6 +505,186 @@ class Nivel{
         	    block.body.allowGravity = false;
         	    this.ground.add(block);
             break;
+            case Oceano:
+            	this.ground = game.add.group();
+        		ledge = game.add.sprite(460, game.height - 350, 'piedra');
+        		game.physics.enable(ledge, Phaser.Physics.ARCADE);
+        	    ledge.body.immovable = true;
+        	    ledge.body.allowGravity = false;
+			    this.ground.add(block);
+			    
+        	    var block;
+        	    for(var i = 0; i <34; i++){
+        	    	if(i ==1){
+        	    		block = game.add.sprite(32*i, game.height - 32, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 64, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 96, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 128, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        	    	}
+        	    	if(i == 0 || i == 29){
+        	    		block = game.add.sprite(32*i, game.height - 158, 'bubble');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        	    	}
+        	    	if(i == 31){
+        	    		block = game.add.sprite(32*i, game.height - 32, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 64, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 96, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 128, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        	    	}
+        	    	if(i > 8 && i < 21){
+        		    	block = game.add.sprite(32*i, game.height - 32, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 64, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 96, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 128, 'ground');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			}
+        	    }
+
+        	    block = game.add.sprite(120, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(152, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(184, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(216, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(248, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(280, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+
+        	    block = game.add.sprite(700, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(732, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(764, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(796, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(828, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(860, game.height - 250, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+
+
+        	    block = game.add.sprite(760, game.height - 500, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(792, game.height - 500, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(824, game.height - 500, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+
+        	    block = game.add.sprite(280, game.height - 500, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(312, game.height - 500, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(344, game.height - 500, 'ground');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+            break;
         }
     }
     colisiones(id){
@@ -531,7 +716,20 @@ class Nivel{
                 game.physics.arcade.collide(id.chaser, id.p3);
             break;
             case Desierto:
-            	
+            	game.physics.arcade.collide(id.chaser, id.bola);
+        	    game.physics.arcade.collide(id.chaser, id.buitre1);
+        	    game.physics.arcade.collide(id.chaser, id.buitre2);
+        	    game.physics.arcade.collide(id.chaser, id.buitre3);
+        	    game.physics.arcade.collide(id.chaser, id.bala);
+            break;
+            case Oceano:
+            	game.physics.arcade.collide(id.chaser, id.tiburon);
+        	    game.physics.arcade.collide(id.chaser, id.ancla1);
+        	    game.physics.arcade.collide(id.chaser, id.ancla2);
+        	    id.spikes = game.physics.arcade.collide(id.chaser, id.erizos);
+        	    game.physics.arcade.collide(id.chaser, id.p1);
+        	    game.physics.arcade.collide(id.chaser, id.p2);
+        	    game.physics.arcade.collide(id.chaser, id.p3);
             break;
         }
     }

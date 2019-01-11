@@ -110,6 +110,50 @@ class Trampas{
         	    id.botonbala = game.add.sprite(1040, 330, 'bevaquero');
         	    id.botonbola = game.add.sprite(1040, 360, 'beTW');
             break;
+            case Oceano:
+            	//crear tiburon
+        	    id.tiburon = game.add.sprite(1100, 367, 'shark');
+        	    var rodar = id.tiburon.animations.add('rodar');
+        	    game.physics.enable(id.tiburon, Phaser.Physics.ARCADE);
+        	    id.tiburon.body.immovable = true;
+        	    id.tiburon.body.allowGravity = false;
+        	    //crear anclas
+        	    id.ancla1 = game.add.sprite(0, -90, 'ancla');
+        	    game.physics.enable(id.ancla1, Phaser.Physics.ARCADE);
+        	    id.ancla1.body.immovable = true;
+        	    id.ancla1.body.allowGravity = false;
+        	    id.ancla2 = game.add.sprite(928, -90, 'ancla');
+        	    game.physics.enable(id.ancla2, Phaser.Physics.ARCADE);
+        	    id.ancla2.body.immovable = true;
+        	    id.ancla2.body.allowGravity = false;
+
+        	    id.erizos = game.add.group();
+        	    //crear erizos
+        	    id.p1 = game.add.sprite(284, 90, 'erizo');
+        	    game.physics.enable(id.p1, Phaser.Physics.ARCADE);
+        	    id.p1.body.immovable = true;
+        	    id.p1.body.allowGravity = false;
+        	    this.erizos.add(id.p1);
+        	    id.p2 = game.add.sprite(256,335, 'erizo');
+        	    game.physics.enable(id.p2, Phaser.Physics.ARCADE);
+        	    id.p2.body.immovable = true;
+        	    id.p2.body.allowGravity = false;
+        	    this.erizos.add(id.p2);
+        	    id.p3 = game.add.sprite(850,335, 'erizo');
+        	    game.physics.enable(id.p3, Phaser.Physics.ARCADE);
+        	    id.p3.body.immovable = true;
+        	    id.p3.body.allowGravity = false;
+        	    this.erizos.add(id.p3);
+        	    id.p4 = game.add.sprite(818, 90, 'erizo');
+        	    game.physics.enable(id.p4, Phaser.Physics.ARCADE);
+        	    id.p4.body.immovable = true;
+        	    id.p4.body.allowGravity = false;
+        	    this.erizos.add(id.p4);
+        	    //crea los botones
+        	    id.botonerizo = game.add.sprite(1040, 300, 'beerizo');
+        	    id.botonestalactita = game.add.sprite(1040, 330, 'beancla');
+        	    id.botontiburon = game.add.sprite(1040, 360, 'betiburon');
+            break;
         }
     }
     trapsHandler(entrada, id){
@@ -135,6 +179,7 @@ class Trampas{
                 this.RodanteRelease(id);
             break;
             case Castillo:
+        		id.bola.scale.setTo(-1, 1);	
             	id.bola.animations.play('rodar', 12, true);
                 id.bola.body.velocity.x = -200;
                 id.botonbola = game.add.sprite(1040, 360, 'bacaballero');
@@ -142,12 +187,21 @@ class Trampas{
                 this.RodanteRelease(id);
             break;
             case Desierto:
+        		id.bola.scale.setTo(0.5,0.5);	
             	id.bola.animations.play('rodar', 12, true);
                 id.bola.body.velocity.x = -200;
                 id.botonbola = game.add.sprite(1040, 360, 'baTW');
                 await this.sleep(7000);
                 this.RodanteRelease(id);
             break;
+            case Oceano:
+            	id.tiburon.animations.play('rodar', 12, true);
+            	id.tiburon.body.velocity.x = (-id.tiburon.body.position.x + id.chaser.body.position.x)/2;
+            	id.tiburon.body.velocity.y = (-id.tiburon.body.position.y + id.chaser.body.position.y)/2;
+            	id.botontiburon = game.add.sprite(1040, 360, 'batiburon');
+            	await this.sleep(7000);
+                this.RodanteRelease(id);
+        	break;
         } 
     }
     async RodanteRelease(id){
@@ -158,16 +212,23 @@ class Trampas{
                 id.botonbola = game.add.sprite(1040, 360, 'bebola');
             break;
             case Castillo:
-        		id.bola.scale.setTo(-1, 1);	
             	id.bola.position.x = 1100;
                 id.bola.body.velocity.x = 0;
                 id.botonbola = game.add.sprite(1040, 360, 'becaballero');
             break;
             case Desierto:
-        		id.bola.scale.setTo(0.5,0.5);	
             	id.bola.position.x = 1100;
                 id.bola.body.velocity.x = 0;
                 id.botonbola = game.add.sprite(1040, 360, 'beTW');
+            break;
+            case Oceano:
+            	id.tiburon.destroy();
+        		id.tiburon = game.add.sprite(1100, 367, 'shark');
+        	    var rodar = id.tiburon.animations.add('rodar');
+        	    game.physics.enable(id.tiburon, Phaser.Physics.ARCADE);
+        	    id.tiburon.body.immovable = true;
+        	    id.tiburon.body.allowGravity = false;	
+        	    id.botontiburon = game.add.sprite(1040, 360, 'betiburon');
             break;
         }
         this.I = false;
@@ -201,6 +262,13 @@ class Trampas{
             	id.buitre3.body.velocity.x = 300;
             	id.botonbuitre = game.add.sprite(1040, 300, 'babuitre');
             	await this.sleep(7000);
+                this.CaidaRelease(id);
+            break;
+            case Oceano:
+            	id.ancla1.body.allowGravity = true;
+        	    id.ancla2.body.allowGravity = true;
+        	    id.botonestalactita = game.add.sprite(1040, 330, 'baestalactita');
+        	    await this.sleep(7000);
                 this.CaidaRelease(id);
             break;
         } 
@@ -249,6 +317,19 @@ class Trampas{
         	    id.buitre3.body.allowGravity = false;	
         	    this.botonbuitre = game.add.sprite(1040, 300, 'bebuitre');
             break;
+            case Oceano:
+            	id.ancla1.destroy();
+        		id.ancla2.destroy();
+        		id.ancla1 = game.add.sprite(0, -90, 'ancla');
+        	    game.physics.enable(id.ancla1, Phaser.Physics.ARCADE);
+        	    id.ancla1.body.immovable = true;
+        	    id.ancla1.body.allowGravity = false;
+        	    id.ancla2 = game.add.sprite(928, -90, 'ancla');
+        	    game.physics.enable(id.ancla2, Phaser.Physics.ARCADE);
+        	    id.ancla2.body.immovable = true;
+        	    id.ancla2.body.allowGravity = false;
+        	    id.botonestalactita = game.add.sprite(1040, 330, 'beancla');
+            break;
         }
         this.O = false;
     }
@@ -273,12 +354,41 @@ class Trampas{
                 this.SeguimientoRelease(id);
             break;
             case Desierto:
-            	id.bala.body.velocity.x = (-id.bala.body.position.x + chaser.body.position.x)*2;
-        		id.bala.body.velocity.y = (-id.bala.body.position.y + chaser.body.position.y)*2;
+            	id.bala.body.velocity.x = (-id.bala.body.position.x + id.chaser.body.position.x)*2;
+        		id.bala.body.velocity.y = (-id.bala.body.position.y + id.chaser.body.position.y)*2;
         	    id.botonbala = game.add.sprite(1040, 330, 'bavaquero');
         	    await this.sleep(7000);
                 this.SeguimientoRelease(id);
            	break;
+            case Oceano:
+            	id.p1.destroy();
+        		id.p2.destroy();
+        		id.p3.destroy();
+        		id.p4.destroy();
+        		id.p1 = game.add.sprite(264, 90, 'erizoa');
+        	    game.physics.enable(id.p1, Phaser.Physics.ARCADE);
+        	    id.p1.body.immovable = true;
+        	    id.p1.body.allowGravity = false;
+        	    id.erizos.add(id.p1);
+        	    id.p2 = game.add.sprite(256,335, 'erizoa');
+        	    game.physics.enable(id.p2, Phaser.Physics.ARCADE);
+        	    id.p2.body.immovable = true;
+        	    id.p2.body.allowGravity = false;
+        	    id.erizos.add(id.p2);
+        	    id.p3 = game.add.sprite(850,335, 'erizoa');
+        	    game.physics.enable(id.p3, Phaser.Physics.ARCADE);
+        	    id.p3.body.immovable = true;
+        	    id.p3.body.allowGravity = false;
+        	    id.erizos.add(id.p3);
+        	    id.p4 = game.add.sprite(818, 90, 'erizoa');
+        	    game.physics.enable(id.p4, Phaser.Physics.ARCADE);
+        	    id.p4.body.immovable = true;
+        	    id.p4.body.allowGravity = false;
+        	    id.erizos.add(id.p4);
+        		id.botonerizo = game.add.sprite(1040, 300, 'baerizo');
+        	    await this.sleep(7000);
+                this.SeguimientoRelease(id);
+            break;
         }
     }
     async SeguimientoRelease(id){
@@ -321,13 +431,39 @@ class Trampas{
     		break;
             case Desierto:
             	id.bala.destroy();
-        		id.bala = this.game.add.sprite(-50, game.height-220, 'bala');
+        		id.bala = game.add.sprite(-50, game.height-220, 'bala');
         	    game.physics.enable(id.bala, Phaser.Physics.ARCADE);
         	    id.bala.body.immovable = true;
         	    id.bala.body.allowGravity = false;        	   
         	    id.botonbala = game.add.sprite(1040, 330, 'bevaquero');
             break;
-            	
+            case Oceano:
+            	id.p1.destroy();
+        		id.p2.destroy();
+        		id.p3.destroy();
+        		id.p4.destroy();
+        		id.p1 = game.add.sprite(264, 90, 'erizo');
+        	    game.physics.enable(id.p1, Phaser.Physics.ARCADE);
+        	    id.p1.body.immovable = true;
+        	    id.p1.body.allowGravity = false;
+        	    id.erizos.add(id.p1);
+        	    id.p2 = game.add.sprite(256,335, 'erizo');
+        	    game.physics.enable(id.p2, Phaser.Physics.ARCADE);
+        	    id.p2.body.immovable = true;
+        	    id.p2.body.allowGravity = false;
+        	    id.erizos.add(id.p2);
+        	    id.p3 = game.add.sprite(850,335, 'erizo');
+        	    game.physics.enable(id.p3, Phaser.Physics.ARCADE);
+        	    id.p3.body.immovable = true;
+        	    id.p3.body.allowGravity = false;
+        	    id.erizos.add(id.p3);
+        	    id.p4 = game.add.sprite(818, 90, 'erizo');
+        	    game.physics.enable(id.p4, Phaser.Physics.ARCADE);
+        	    id.p4.body.immovable = true;
+        	    id.p4.body.allowGravity = false;
+        	    id.erizos.add(id.p4);
+        	    id.botonerizo = game.add.sprite(1040, 300, 'beerizo');
+            break;            	
         }
         this.P = false;
     }

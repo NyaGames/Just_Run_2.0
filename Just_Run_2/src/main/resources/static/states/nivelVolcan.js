@@ -1,17 +1,17 @@
-JustRun.nivelDesierto = function(game){
+JustRun.nivelVolcan = function(game){
 	
 }
-var Desierto = new Nivel("Desierto");
+var Volcan = new Nivel("Volcan");
 var trampas = new Trampas();
 var timer = new Timer();
 
-JustRun.nivelDesierto.prototype = {	
+JustRun.nivelVolcan.prototype = {	
     create: function(){
-        Desierto.crear(Desierto);
-        Desierto.crearmundo(Desierto);
-        trampas.crearTrampas(Desierto);  
-        Desierto.crearChaser(Desierto)
-        Desierto.crearEscapist(Desierto)   
+        Volcan.crear(Volcan);
+        Volcan.crearmundo(Volcan);
+        trampas.crearTrampas(Volcan);  
+        Volcan.crearChaser(Volcan)
+        Volcan.crearEscapist(Volcan)   
         entrada = new Entrada();
         timer.initTimer();
         audio.loop();
@@ -23,17 +23,17 @@ JustRun.nivelDesierto.prototype = {
         	}
         	ws.send(JSON.stringify(data))
             timer.render();
-            Desierto.colisiones(Desierto,Desierto.chaser,Desierto.escapist);
+            Volcan.colisiones(Volcan,Volcan.chaser,Volcan.escapist);
             if(JustRun_userID == 1){
             	data = {
                     	type: 'LEVELCHASER'
                 }
                 ws.send(JSON.stringify(data));
-                entrada.mover(Desierto.chaser, Desierto);
+                entrada.mover(Volcan.chaser, Volcan);
                 data = {
                 		type: 'CHASER',
-                		x: Desierto.chaser.position.x,
-                		y: Desierto.chaser.position.y,
+                		x: Volcan.chaser.position.x,
+                		y: Volcan.chaser.position.y,
                 		score: 0,
                 		cazado: false,
                 }
@@ -41,23 +41,23 @@ JustRun.nivelDesierto.prototype = {
             }
             if(JustRun_userID == 2){
             	data = {
-                    	type: 'DESIERTOESCAPIST'
+                    	type: 'VOLCANESCAPIST'
                     }
                 ws.send(JSON.stringify(data));
-                entrada.mover(Desierto.escapist, Desierto);
+                entrada.mover(Volcan.escapist, Volcan);
                 data = {
                 		type: 'ESCAPIST',
-                		x: Desierto.escapist.position.x,
-                		y: Desierto.escapist.position.y,
+                		x: Volcan.escapist.position.x,
+                		y: Volcan.escapist.position.y,
                 }
                 ws.send(JSON.stringify(data));
             }
-            trampas.trapsHandler(entrada, Desierto);
-            if(Desierto.catched){
+            trampas.trapsHandler(entrada, Volcan);
+            if(Volcan.catched){
             	 data = {
                  		type: 'CHASER',
-                 		x: Desierto.chaser.position.x,
-                 		y: Desierto.chaser.position.y,
+                 		x: Volcan.chaser.position.x,
+                 		y: Volcan.chaser.position.y,
                  		score: 1,
                  		cazado: true,
                  }
@@ -67,9 +67,11 @@ JustRun.nivelDesierto.prototype = {
             }
         }else{
             audio.cambio();
-            Desierto.chaser.destroy();
-            Desierto.escapist.destroy();
-            game.state.start("cargaOceano")
+            data = {
+            		typer: 'FINALE',
+            }
+            ws.send(JSON.stringify(data));
+            
         }
     },
 }

@@ -77,5 +77,11 @@ ws.onmessage = function (message) {
         case 110:
         	Desierto.mover(Desierto.chaser, msg.x, msg.y);
         	break;
+        case 111:
+        	Oceano.mover(Oceano.chaser, msg.x, msg.y);
+        	break;
+        case 112:
+        	Volcan.mover(Volcan.chaser, msg.x, msg.y);
+        	break;
     }
 }

@@ -112,6 +112,24 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 				json.put("score", chaser.getScore());
 				session.sendMessage(new TextMessage(json.toString()));
 				break;
+			case "OCEANOESCAPIST":
+				players = gameController.getPlayers();				
+				chaser = players.iterator().next();
+				json.put("type", 'o');
+				json.put("x", chaser.getX());
+				json.put("y", chaser.getY());
+				json.put("score", chaser.getScore());
+				session.sendMessage(new TextMessage(json.toString()));
+				break;
+			case "VOLCANESCAPIST":
+				players = gameController.getPlayers();				
+				chaser = players.iterator().next();
+				json.put("type", 'p');
+				json.put("x", chaser.getX());
+				json.put("y", chaser.getY());
+				json.put("score", chaser.getScore());
+				session.sendMessage(new TextMessage(json.toString()));
+				break;
 			case "LEVELCHASER":
 				/*final Iterator<Player> itr = players.iterator();
 		        Player lastElement = itr.next();
