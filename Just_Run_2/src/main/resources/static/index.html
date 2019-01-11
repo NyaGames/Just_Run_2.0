@@ -16,6 +16,8 @@
         <script src="states/carga_nivelNieve.js"></script>
         <script src="states/nivelCastillo.js"></script>
         <script src="states/carga_nivelCastillo.js"></script>
+        <script src="states/nivelDesierto.js"></script>
+        <script src="states/carga_nivelDesierto.js"></script>
         <script src="states/carga_menu.js"></script>
         <script src="states/menu.js"></script>
         <script src="states/matchmaking.js"></script>
@@ -42,9 +44,11 @@
         game.state.add('cargaMenu', JustRun.cargaMenu, true);
         game.state.add('cargaNieve', JustRun.carga_nivelNieve, true);
         game.state.add('cargaCastillo', JustRun.carga_nivelCastillo, true);
+        game.state.add('cargaDesierto', JustRun.carga_nivelDesierto, true);
         game.state.add('menu', JustRun.menu, true);
         game.state.add('nieve', JustRun.nivelNieve, true);
         game.state.add('castillo', JustRun.nivelCastillo, true);    
+        game.state.add('desierto', JustRun.nivelDesierto, true);  
     
         game.state.start('boot');    	
     </script>

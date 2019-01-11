@@ -69,7 +69,13 @@ ws.onmessage = function (message) {
             //Nieve.mover(escapist, msg.x, msg.y);
         	break;
         case 108:
-        	Nieve.mover(chaser, msg.x, msg.y);
+        	Nieve.mover(Nieve.chaser, msg.x, msg.y);
+        	break;
+        case 109:
+        	Castillo.mover(Castillo.chaser, msg.x, msg.y);
+        	break;
+        case 110:
+        	Desierto.mover(Desierto.chaser, msg.x, msg.y);
         	break;
     }
 }

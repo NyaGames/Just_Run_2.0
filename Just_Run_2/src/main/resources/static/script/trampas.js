@@ -72,6 +72,44 @@ class Trampas{
                 id.botonestalactita = game.add.sprite(1040, 330, 'beaceite');
                 id.botonbola = game.add.sprite(1040, 360, 'becaballero');
             break;
+            case Desierto:
+        	    //crear bola del oeste
+        	    id.bola = game.add.sprite(1100, 380, 'tweed');
+        	    var rodar = id.bola.animations.add('rodar');
+        	    game.physics.enable(id.bola, Phaser.Physics.ARCADE);
+        	    id.bola.body.immovable = true;
+        	    id.bola.body.allowGravity = false;
+
+        	    //crear bala
+        	    id.bala = game.add.sprite(-50, game.height-220, 'bala');
+        	    game.physics.enable(id.bala, Phaser.Physics.ARCADE);
+        	    id.bala.body.immovable = true;
+        	    id.bala.body.allowGravity = false;
+        	   
+        	    //crear buitres
+        	    id.buitre1 = game.add.sprite(-200,48, 'buitre');
+        	    var rodar = id.buitre1.animations.add('rodar');
+        	    game.physics.enable(id.buitre1, Phaser.Physics.ARCADE);
+        	    id.buitre1.body.immovable = true;
+        	    id.buitre1.body.allowGravity = false;
+
+        	    id.buitre2 = game.add.sprite(-200,300, 'buitre');
+        	    var rodar = id.buitre2.animations.add('rodar');
+        	    game.physics.enable(id.buitre2, Phaser.Physics.ARCADE);
+        	    id.buitre2.body.immovable = true;
+        	    id.buitre2.body.allowGravity = false;
+
+        	    id.buitre3 = game.add.sprite(-200,200, 'buitre');
+        	    var rodar = id.buitre3.animations.add('rodar');
+        	    game.physics.enable(id.buitre3, Phaser.Physics.ARCADE);
+        	    id.buitre3.body.immovable = true;
+        	    id.buitre3.body.allowGravity = false;
+
+        	    //crear botones
+        	    id.botonbuitre = game.add.sprite(1040, 300, 'bebuitre');
+        	    id.botonbala = game.add.sprite(1040, 330, 'bevaquero');
+        	    id.botonbola = game.add.sprite(1040, 360, 'beTW');
+            break;
         }
     }
     trapsHandler(entrada, id){
@@ -95,6 +133,20 @@ class Trampas{
                 await this.sleep(7000);
                 this.RodanteRelease(id);
             break;
+            case Castillo:
+            	id.bola.animations.play('rodar', 12, true);
+                id.bola.body.velocity.x = -200;
+                id.botonbola = game.add.sprite(1040, 360, 'bacaballero');
+                await this.sleep(7000);
+                this.RodanteRelease(id);
+            break;
+            case Desierto:
+            	id.bola.animations.play('rodar', 12, true);
+                id.bola.body.velocity.x = -200;
+                id.botonbola = game.add.sprite(1040, 360, 'baTW');
+                await this.sleep(7000);
+                this.RodanteRelease(id);
+            break;
         } 
     }
     async RodanteRelease(id){
@@ -103,6 +155,16 @@ class Trampas{
                 id.bola.position.x = 1100;
                 id.bola.body.velocity.x = 0;
                 id.botonbola = game.add.sprite(1040, 360, 'bebola');
+            break;
+            case Castillo:
+            	id.bola.position.x = 1100;
+                id.bola.body.velocity.x = 0;
+                id.botonbola = game.add.sprite(1040, 360, 'becaballero');
+            break;
+            case Desierto:
+            	id.bola.position.x = 1100;
+                id.bola.body.velocity.x = 0;
+                id.botonbola = game.add.sprite(1040, 360, 'beTW');
             break;
         }
         this.I = false;
@@ -117,22 +179,71 @@ class Trampas{
                 await this.sleep(7000);
                 this.CaidaRelease(id);
             break;
+            case Castillo:
+            	id.aceite1.allowGravity = true;
+            	id.botonestalactita = game.add.sprite(1040,330, 'baaceite');
+            	await this.sleep(7000);
+                this.CaidaRelease(id);
+            break;
+            case Desierto:
+            	id.buitre1.scale.setTo(0.5,0.5);	
+            	id.buitre2.scale.setTo(0.5,0.5);	
+            	id.buitre3.scale.setTo(0.5,0.5);	
+            	id.buitre1.animations.play('rodar', 4, true);
+            	id.buitre2.animations.play('rodar', 4, true);
+            	id.buitre3.animations.play('rodar', 4, true);
+            	id.buitre1.body.velocity.x = 300;
+            	id.buitre2.body.velocity.x = 300;
+            	id.buitre3.body.velocity.x = 300;
+            	id.botonbuitre = game.add.sprite(1040, 300, 'babuitre');
+            	await this.sleep(7000);
+                this.CaidaRelease(id);
+            break;
         } 
     }
     async CaidaRelease(id){
         switch(id){
             case Nieve:            
-            id.chuzo1.destroy();
-			id.chuzo2.destroy();
-			id.chuzo1 = game.add.sprite(650, -90, 'chuzo');
-		    game.physics.enable(id.chuzo1, Phaser.Physics.ARCADE);
-		    id.chuzo1.body.immovable = true;
-		    id.chuzo1.body.allowGravity = false;
-		    id.chuzo2 = game.add.sprite(400, -90, 'chuzo');
-		    game.physics.enable(id.chuzo2, Phaser.Physics.ARCADE);
-		    id.chuzo2.body.immovable = true;
-		    id.chuzo2.body.allowGravity = false;
-		    id.botonestalactita = game.add.sprite(1040, 330, 'bestalactita');
+	            id.chuzo1.destroy();
+				id.chuzo2.destroy();
+				id.chuzo1 = game.add.sprite(650, -90, 'chuzo');
+			    game.physics.enable(id.chuzo1, Phaser.Physics.ARCADE);
+			    id.chuzo1.body.immovable = true;
+			    id.chuzo1.body.allowGravity = false;
+			    id.chuzo2 = game.add.sprite(400, -90, 'chuzo');
+			    game.physics.enable(id.chuzo2, Phaser.Physics.ARCADE);
+			    id.chuzo2.body.immovable = true;
+			    id.chuzo2.body.allowGravity = false;
+			    id.botonestalactita = game.add.sprite(1040, 330, 'bestalactita');
+            break;
+            case Castillo:
+            	id.aceite1.destroy();
+            	id.aceite1 = game.add.sprite(520,-90, 'aceite');
+                game.physics.enable(id.aceite1, Phaser.Physics.ARCADE);
+                id.aceite1.body.immovable = true;
+                id.aceite1.body.allowGravity = false;
+                id.botonestalactita = game.add.sprite(1040, 330, 'beaceite');
+            break;
+            case Desierto:
+            	id.buitre1.destroy();
+        		id.buitre2.destroy();
+        		id.buitre3.destroy();
+        		id.buitre1 = game.add.sprite(-200,48, 'buitre');
+        	    var rodar = id.buitre1.animations.add('rodar');
+        	    game.physics.enable(id.buitre1, Phaser.Physics.ARCADE);
+        	    id.buitre1.body.immovable = true;
+        	    id.buitre1.body.allowGravity = false;
+        	    id.buitre2 = game.add.sprite(-200,300, 'buitre');
+        	    var rodar = id.buitre2.animations.add('rodar');
+        	    game.physics.enable(id.buitre2, Phaser.Physics.ARCADE);
+        	    id.buitre2.body.immovable = true;
+        	    id.buitre2.body.allowGravity = false;
+        	    id.buitre3 = game.add.sprite(-200,200, 'buitre');
+        	    var rodar = id.buitre3.animations.add('rodar');
+        	    game.physics.enable(id.buitre3, Phaser.Physics.ARCADE);
+        	    id.buitre3.body.immovable = true;
+        	    id.buitre3.body.allowGravity = false;	
+        	    this.botonbuitre = game.add.sprite(1040, 300, 'bebuitre');
             break;
         }
         this.O = false;
@@ -148,6 +259,21 @@ class Trampas{
                 await this.sleep(7000);
                 this.SeguimientoRelease(id);
             break;
+            case Castillo:
+            	id.p1.body.velocity.x = 300;
+                id.p2.body.velocity.x = 300;
+                id.p3.body.velocity.x = 300;
+                id.botonpinguino = game.add.sprite(1040, 300, 'baelfo');
+                await this.sleep(7000);
+                this.SeguimientoRelease(id);
+            break;
+            case Desierto:
+            	id.bala.body.velocity.x = (-id.bala.body.position.x + chaser.body.position.x)*2;
+        		id.bala.body.velocity.y = (-id.bala.body.position.y + chaser.body.position.y)*2;
+        	    id.botonbala = game.add.sprite(1040, 330, 'bavaquero');
+        	    await this.sleep(7000);
+                this.SeguimientoRelease(id);
+           	break;
         }
     }
     async SeguimientoRelease(id){
@@ -170,6 +296,33 @@ class Trampas{
 		    id.p3.body.allowGravity = false;	
 		    id.botonpinguino = game.add.sprite(1040, 300, 'bepinguino');
             break;
+            case Castillo:
+                id.p1.destroy();
+    			id.p2.destroy();
+    			id.p3.destroy();
+    			id.p1 = game.add.sprite(-50,130, 'flecha');
+                game.physics.enable(id.p1, Phaser.Physics.ARCADE);
+                id.p1.body.immovable = true;
+                id.p1.body.allowGravity = false;
+                id.p2 = game.add.sprite(-150,130, 'flecha');
+                game.physics.enable(id.p2, Phaser.Physics.ARCADE);
+                id.p2.body.immovable = true;
+                id.p2.body.allowGravity = false;
+                id.p3 = game.add.sprite(-250,130, 'flecha');
+                game.physics.enable(id.p3, Phaser.Physics.ARCADE);
+                id.p3.body.immovable = true;
+                id.p3.body.allowGravity = false;
+                id.botonflecha = game.add.sprite(1040, 300, 'beelfo');
+    		break;
+            case Desierto:
+            	id.bala.destroy();
+        		id.bala = this.game.add.sprite(-50, game.height-220, 'bala');
+        	    game.physics.enable(id.bala, Phaser.Physics.ARCADE);
+        	    id.bala.body.immovable = true;
+        	    id.bala.body.allowGravity = false;        	   
+        	    id.botonbala = game.add.sprite(1040, 330, 'bevaquero');
+            break;
+            	
         }
         this.P = false;
     }

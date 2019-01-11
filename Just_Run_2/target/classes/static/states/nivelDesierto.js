@@ -1,17 +1,17 @@
-JustRun.nivelCastillo = function(game){
+JustRun.nivelDesierto = function(game){
 	
 }
-var Castillo = new Nivel("Castillo");
+var Desierto = new Nivel("Desierto");
 var trampas = new Trampas();
 var timer = new Timer();
 
-JustRun.nivelCastillo.prototype = {	
+JustRun.nivelDesierto.prototype = {	
     create: function(){
-        Castillo.crear(Castillo);
-        Castillo.crearmundo(Castillo);
-        trampas.crearTrampas(Castillo);  
-        Castillo.crearChaser(Castillo)
-        Castillo.crearEscapist(Castillo)   
+        Desierto.crear(Desierto);
+        Desierto.crearmundo(Desierto);
+        trampas.crearTrampas(Desierto);  
+        Desierto.crearChaser(Desierto)
+        Desierto.crearEscapist(Desierto)   
         entrada = new Entrada();
         timer.initTimer();
         audio.loop();
@@ -23,17 +23,17 @@ JustRun.nivelCastillo.prototype = {
         	}
         	ws.send(JSON.stringify(data))
             timer.render();
-            Castillo.colisiones(Castillo,Castillo.chaser,Castillo.escapist);
+            Desierto.colisiones(Desierto,Desierto.chaser,Desierto.escapist);
             if(JustRun_userID == 1){
             	data = {
                     	type: 'LEVELCHASER'
                 }
                 ws.send(JSON.stringify(data));
-                entrada.mover(Castillo.chaser, Castillo);
+                entrada.mover(Desierto.chaser, Desierto);
                 data = {
                 		type: 'CHASER',
-                		x: Castillo.chaser.position.x,
-                		y: Castillo.chaser.position.y,
+                		x: Desierto.chaser.position.x,
+                		y: Desierto.chaser.position.y,
                 		score: 0,
                 		cazado: false,
                 }
@@ -41,23 +41,23 @@ JustRun.nivelCastillo.prototype = {
             }
             if(JustRun_userID == 2){
             	data = {
-                    	type: 'CASTILLOESCAPIST'
+                    	type: 'DESIERTOESCAPIST'
                     }
                 ws.send(JSON.stringify(data));
-                entrada.mover(Castillo.escapist, Castillo);
+                entrada.mover(Desierto.escapist, Desierto);
                 data = {
                 		type: 'ESCAPIST',
-                		x: Castillo.escapist.position.x,
-                		y: Castillo.escapist.position.y,
+                		x: Desierto.escapist.position.x,
+                		y: Desierto.escapist.position.y,
                 }
                 ws.send(JSON.stringify(data));
             }
-            trampas.trapsHandler(entrada, Castillo);
-            if(Castillo.catched){
+            trampas.trapsHandler(entrada, Desierto);
+            if(Desierto.catched){
             	 data = {
                  		type: 'CHASER',
-                 		x: Castillo.chaser.position.x,
-                 		y: Castillo.chaser.position.y,
+                 		x: Desierto.chaser.position.x,
+                 		y: Desierto.chaser.position.y,
                  		score: 1,
                  		cazado: true,
                  }
@@ -67,8 +67,8 @@ JustRun.nivelCastillo.prototype = {
             }
         }else{
             audio.cambio();
-            Castillo.chaser.destroy();
-            Castillo.escapist.destroy();
+            Desierto.chaser.destroy();
+            Desierto.escapist.destroy();
             game.state.start("cargaDesierto")
         }
     },
