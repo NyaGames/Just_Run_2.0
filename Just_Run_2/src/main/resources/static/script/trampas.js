@@ -124,6 +124,7 @@ class Trampas{
         }
     }
     async Rodante(id){
+    	audio.rodacionar();
         this.I = true;
         switch(id){
             case Nieve:
@@ -157,11 +158,13 @@ class Trampas{
                 id.botonbola = game.add.sprite(1040, 360, 'bebola');
             break;
             case Castillo:
+        		id.bola.scale.setTo(-1, 1);	
             	id.bola.position.x = 1100;
                 id.bola.body.velocity.x = 0;
                 id.botonbola = game.add.sprite(1040, 360, 'becaballero');
             break;
             case Desierto:
+        		id.bola.scale.setTo(0.5,0.5);	
             	id.bola.position.x = 1100;
                 id.bola.body.velocity.x = 0;
                 id.botonbola = game.add.sprite(1040, 360, 'beTW');
@@ -170,6 +173,7 @@ class Trampas{
         this.I = false;
     }
     async Caida(id){
+    	audio.caidicionar();
         this.O = true;
         switch(id){
             case Nieve:
@@ -249,6 +253,7 @@ class Trampas{
         this.O = false;
     }
     async Seguimiento(id){
+    	audio.seguicionar();
         this.P = true;
         switch(id){
             case Nieve:

@@ -533,12 +533,16 @@ class Nivel{
         }
     }
     mover(objeto, x, y){
+    	audio.andacionar();
     	if(objeto.position.x < x){
     		objeto.scale.setTo(1,1);
     		objeto.animations.play("run");
     	}else if(objeto.position.x > x){
     		objeto.scale.setTo(-1,1);
     		objeto.animations.play("run");
+    	}
+    	if(objeto.position.y > y){
+    		audio.saltacionar();
     	}
     	objeto.position.x = x;
     	objeto.position.y = y;

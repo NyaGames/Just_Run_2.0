@@ -98,11 +98,13 @@ JustRun.menu.prototype = {
 	seleccion: function(estado){
 		switch(estado){
 			case 1:
+				audio.cambio();
 				game.state.start("tutorial");
 			break;
 			case 2:
 			break;
 			case 3:
+				
 			break;
             case 4:
                 game.state.start("ayuda");
