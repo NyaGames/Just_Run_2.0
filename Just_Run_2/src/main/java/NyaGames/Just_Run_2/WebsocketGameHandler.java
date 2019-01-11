@@ -160,6 +160,15 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 				escapist.setX(node.get("x").asInt());
 				escapist.setY(node.get("y").asInt());
 				break;
+			case "FINALE":
+				chaser = players.iterator().next();
+				if(chaser.getScore() >= 3) {
+					json.put("type", 'y');
+				}else {
+					json.put("type", 'z');
+				}
+				session.sendMessage(new TextMessage(json.toString()));
+				break;
 			default:
 				break;
 			}

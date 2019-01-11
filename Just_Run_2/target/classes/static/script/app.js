@@ -83,5 +83,12 @@ ws.onmessage = function (message) {
         case 112:
         	Volcan.mover(Volcan.chaser, msg.x, msg.y);
         	break;
+        case 121:
+        	audio.stop();
+        	game.state.start();
+        	break;
+        case 122:
+        	audio.stop();
+        	game.state.start();
     }
 }

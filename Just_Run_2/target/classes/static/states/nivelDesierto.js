@@ -69,6 +69,18 @@ JustRun.nivelDesierto.prototype = {
             audio.cambio();
             Desierto.chaser.destroy();
             Desierto.escapist.destroy();
+            data = {
+              		type: 'CHASER',
+              		x: 60,
+              		y: 300,
+           	 	}
+           	 	ws.send(JSON.stringify(data));
+           	 	data = {
+             		type: 'ESCAPIST',
+             		x: 1000,
+             		y: 300,
+           	 	}
+           	 	ws.send(JSON.stringify(data));
             game.state.start("cargaOceano")
         }
     },

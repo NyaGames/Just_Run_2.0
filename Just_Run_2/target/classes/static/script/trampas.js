@@ -154,6 +154,39 @@ class Trampas{
         	    id.botonestalactita = game.add.sprite(1040, 330, 'beancla');
         	    id.botontiburon = game.add.sprite(1040, 360, 'betiburon');
             break;
+            case Volcan:
+            	id.ola = game.add.sprite(1100, 375, 'ola');
+        	    game.physics.enable(id.ola, Phaser.Physics.ARCADE);
+        	    id.ola.body.immovable = true;
+        	    id.ola.body.allowGravity = false;
+        	    //crear meteor de punta
+        	    id.meteor1 = game.add.sprite(650, -90, 'meteor');
+        	    game.physics.enable(id.meteor1, Phaser.Physics.ARCADE);
+        	    id.meteor1.body.immovable = true;
+        	    id.meteor1.body.allowGravity = false;
+        	    id.meteor2 = game.add.sprite(400, -90, 'meteor');
+        	    game.physics.enable(id.meteor2, Phaser.Physics.ARCADE);
+        	    id.meteor2.body.immovable = true;
+        	    id.meteor2.body.allowGravity = false;
+        	    id.meteor3 = game.add.sprite(1000, -90, 'meteor');
+        	    game.physics.enable(id.meteor3, Phaser.Physics.ARCADE);
+        	    id.meteor3.body.immovable = true;
+        	    id.meteor3.body.allowGravity = false;
+        	    //crear penguinos
+        	    id.p1 = game.add.sprite(-50,110, 'magma');
+        	    game.physics.enable(id.p1, Phaser.Physics.ARCADE);
+        	    id.p1.body.immovable = true;
+        	    id.p1.body.allowGravity = false;
+        	    id.p2 = game.add.sprite(-50,325, 'magma');
+        	    game.physics.enable(id.p2, Phaser.Physics.ARCADE);
+        	    id.p2.body.immovable = true;
+        	    id.p2.body.allowGravity = false;
+        	    
+        	    //crear botones
+        	    id.botonmagma = game.add.sprite(1040, 300, 'bemagma');
+        	    id.botonmeteorito = game.add.sprite(1040, 330, 'bmeteorito');
+        	    id.botonola = game.add.sprite(1040, 360, 'beola');	
+            break;
         }
     }
     trapsHandler(entrada, id){
@@ -202,6 +235,12 @@ class Trampas{
             	await this.sleep(7000);
                 this.RodanteRelease(id);
         	break;
+            case Volcan:
+            	id.ola.body.velocity.x = -200;
+        		id.botonola = game.add.sprite(1040, 360, 'baola');
+        		await this.sleep(7000);
+                this.RodanteRelease(id);
+            break;
         } 
     }
     async RodanteRelease(id){
@@ -229,6 +268,14 @@ class Trampas{
         	    id.tiburon.body.immovable = true;
         	    id.tiburon.body.allowGravity = false;	
         	    id.botontiburon = game.add.sprite(1040, 360, 'betiburon');
+            break;
+            case Volcan:
+            	id.ola.destroy();
+        		id.ola = game.add.sprite(1100, 375, 'ola');
+        		game.physics.enable(id.ola, Phaser.Physics.ARCADE);
+        	    id.ola.body.immovable = true;
+        	    id.ola.body.allowGravity = false;	
+        	    this.botonola = game.add.sprite(1040, 360, 'beola');
             break;
         }
         this.I = false;
@@ -268,6 +315,17 @@ class Trampas{
             	id.ancla1.body.allowGravity = true;
         	    id.ancla2.body.allowGravity = true;
         	    id.botonestalactita = game.add.sprite(1040, 330, 'baestalactita');
+        	    await this.sleep(7000);
+                this.CaidaRelease(id);
+            break;
+            case Volcan:
+            	id.meteor1.body.allowGravity = true;
+        		id.meteor1.body.velocity.x = -300;
+        	    id.meteor2.body.allowGravity = true;
+        	    id.meteor2.body.velocity.x = -300;
+        	    id.meteor3.body.allowGravity = true;
+        	    id.meteor3.body.velocity.x = -300;
+        	    id.botonmeteorito = game.add.sprite(1040, 330, 'bameteorito');
         	    await this.sleep(7000);
                 this.CaidaRelease(id);
             break;
@@ -330,6 +388,24 @@ class Trampas{
         	    id.ancla2.body.allowGravity = false;
         	    id.botonestalactita = game.add.sprite(1040, 330, 'beancla');
             break;
+            case Volcan:
+            	id.meteor1.destroy();
+        		id.meteor2.destroy();
+        		id.meteor3.destroy();
+        		id.meteor1 = game.add.sprite(650, -90, 'meteor');
+        	    game.physics.enable(id.meteor1, Phaser.Physics.ARCADE);
+        	    id.meteor1.body.immovable = true;
+        	    id.meteor1.body.allowGravity = false;
+        	    id.meteor2 = game.add.sprite(400, -90, 'meteor');
+        	    game.physics.enable(id.meteor2, Phaser.Physics.ARCADE);
+        	    id.meteor2.body.immovable = true;
+        	    id.meteor2.body.allowGravity = false;
+        	    id.meteor3 = game.add.sprite(1000, -90, 'meteor');
+        	    game.physics.enable(id.meteor3, Phaser.Physics.ARCADE);
+        	    id.meteor3.body.immovable = true;
+        	    id.meteor3.body.allowGravity = false;
+        	    id.botonmeteorito = game.add.sprite(1040, 330, 'bmeteorito');
+            break;
         }
         this.O = false;
     }
@@ -388,6 +464,11 @@ class Trampas{
         		id.botonerizo = game.add.sprite(1040, 300, 'baerizo');
         	    await this.sleep(7000);
                 this.SeguimientoRelease(id);
+            break;
+            case Volcan:
+            	id.p1.body.velocity.x = 300;
+        		id.p2.body.velocity.x = 300;
+        		id.botonmagma = game.add.sprite(1040, 300, 'bamagma');
             break;
         }
     }
@@ -463,7 +544,20 @@ class Trampas{
         	    id.p4.body.allowGravity = false;
         	    id.erizos.add(id.p4);
         	    id.botonerizo = game.add.sprite(1040, 300, 'beerizo');
-            break;            	
+            break;    
+            case Volcan:
+            	id.p1.destroy();
+        		id.p2.destroy();
+        		id.p1 = game.add.sprite(-50,110, 'magma');
+        	    game.physics.enable(id.p1, Phaser.Physics.ARCADE);
+        	    id.p1.body.immovable = true;
+        	    id.p1.body.allowGravity = false;
+        	    id.p2 = game.add.sprite(-50,325, 'magma');
+        	    game.physics.enable(id.p2, Phaser.Physics.ARCADE);
+        	    id.p2.body.immovable = true;
+        	    id.p2.body.allowGravity = false;
+        	    id.botonmagma = game.add.sprite(1040, 300, 'bemagma');
+            break;
         }
         this.P = false;
     }

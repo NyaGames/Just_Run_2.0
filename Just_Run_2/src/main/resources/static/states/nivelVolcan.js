@@ -68,10 +68,9 @@ JustRun.nivelVolcan.prototype = {
         }else{
             audio.cambio();
             data = {
-            		typer: 'FINALE',
+            		type: 'FINALE',
             }
             ws.send(JSON.stringify(data));
-            
         }
     },
 }

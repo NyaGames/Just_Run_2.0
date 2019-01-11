@@ -1,7 +1,7 @@
-JustRun.carga_nivelOceano = function(game){
+JustRun.carga_nivelDesierto = function(game){
 	
 }
-JustRun.carga_nivelOceano.prototype = {
+JustRun.carga_nivelDesierto.prototype = {
 	preload: function(){
 		game.load.image('sea', 'assets/fondos/oceano.png');
 		game.load.image('ground', 'assets/tiles/oceano/arena.png');

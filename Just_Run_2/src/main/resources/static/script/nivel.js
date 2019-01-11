@@ -40,6 +40,11 @@ class Nivel{
                 id.height = 600;
                 id.background = game.add.sprite(0,0,'sea');
             break;
+            case Volcan:
+            	id.width = 1068;
+                id.height = 600;
+                id.background = game.add.sprite(0,0,'volcano');
+            break;
         }
     }
     //creamos las plataformas del nivel
@@ -685,6 +690,72 @@ class Nivel{
         	    block.body.allowGravity = false;
         	    this.ground.add(block);
             break;
+            case Volcan:
+            	this.ground = game.add.group();
+            	
+        	    var block;
+        	    for(var i = 0; i <34; i++){
+        	    	block = game.add.sprite(32*i, game.height - 32, 'ground');
+        	    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        		    block.body.immovable = true;
+        		    block.body.allowGravity = false;
+        		    this.ground.add(block);
+        		    block = game.add.sprite(i*32, game.height - 64, 'ground');
+        	    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        		    block.body.immovable = true;
+        		    block.body.allowGravity = false;
+        		    this.ground.add(block);
+        		    block = game.add.sprite(i*32, game.height - 96, 'ground');
+        	    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        		    block.body.immovable = true;
+        		    block.body.allowGravity = false;
+        		    this.ground.add(block);
+        		    if(i == 6 || i == 25){
+        			    block = game.add.sprite(32*i, game.height - 128, 'lava');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 160, 'lava');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 192, 'lava');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        			    block = game.add.sprite(i*32, game.height - 224, 'lava');
+        		    	game.physics.enable(block, Phaser.Physics.ARCADE);
+        			    block.body.immovable = true;
+        			    block.body.allowGravity = false;
+        			    this.ground.add(block);
+        		    }        		    
+        	    }   
+        	    //trampa arena
+        	    block = game.add.sprite(120, game.height - 250, 'ledge');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(700+64, game.height - 250, 'ledge');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+
+        	    block = game.add.sprite(760+64, game.height - 450, 'ledge');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;ty = false;
+        	    this.ground.add(block);
+        	    block = game.add.sprite(180, game.height - 450, 'ledge');
+        	    game.physics.enable(block, Phaser.Physics.ARCADE);
+        	    block.body.immovable = true;
+        	    block.body.allowGravity = false;
+        	    this.ground.add(block);
+            break;
         }
     }
     colisiones(id){
@@ -727,6 +798,15 @@ class Nivel{
         	    game.physics.arcade.collide(id.chaser, id.ancla1);
         	    game.physics.arcade.collide(id.chaser, id.ancla2);
         	    id.spikes = game.physics.arcade.collide(id.chaser, id.erizos);
+        	    game.physics.arcade.collide(id.chaser, id.p1);
+        	    game.physics.arcade.collide(id.chaser, id.p2);
+        	    game.physics.arcade.collide(id.chaser, id.p3);
+            break;
+            case Volcan:
+            	game.physics.arcade.collide(id.chaser, id.ola);
+        	    game.physics.arcade.collide(id.chaser, id.meteor1);
+        	    game.physics.arcade.collide(id.chaser, id.meteor2);
+        	    game.physics.arcade.collide(id.chaser, id.meteor3);
         	    game.physics.arcade.collide(id.chaser, id.p1);
         	    game.physics.arcade.collide(id.chaser, id.p2);
         	    game.physics.arcade.collide(id.chaser, id.p3);
