@@ -1,11 +1,11 @@
 JustRun.nivelNieve = function(game){
 	
 }
-let Nieve = new Nivel("Nieve");
-let trampas = new Trampas();
-let chaser = new Chaser(60, 300, 0);
-let escapist = new Escapist(1000, 300, 0);
-let timer = new Timer();
+var Nieve = new Nivel("Nieve");
+var trampas = new Trampas();
+var chaser = new Chaser(60, 300, 0);
+var escapist = new Escapist(1000, 300, 0);
+var timer = new Timer();
 
 JustRun.nivelNieve.prototype = {	
     preload: function(){
@@ -68,6 +68,9 @@ JustRun.nivelNieve.prototype = {
                 console.log(data.score);
             }
         }else{
+            audio.cambio();
+            chaser.destroy();
+            escapist.destroy();
             game.state.start("cargaCastillo")
         }
     },

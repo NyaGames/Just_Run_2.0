@@ -10,7 +10,7 @@ class Escapist{
     }
      //metodo que crea el objeto de Phaser, con animaciones etc
      crear(escapist){
-        escapist = game.add.sprite(escapist.positionX, chaser.positionY, 'escapist');
+        escapist = game.add.sprite(escapist.positionX, escapist.positionY, 'escapist');
         game.physics.enable(escapist, Phaser.Physics.ARCADE);
         escapist.body.collideWorldBounds = true;
         escapist.body.maxVelocity.setTo(300, 300 * 10);

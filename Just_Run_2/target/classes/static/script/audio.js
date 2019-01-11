@@ -37,4 +37,8 @@ class Audio{
     capturacionar(){
 
     }
+    
+    cambio(){
+        this.song.stop();
+    }
 }

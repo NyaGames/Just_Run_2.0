@@ -43,6 +43,35 @@ class Trampas{
                 id.botonestalactita = game.add.sprite(1040, 330, 'bestalactita');
                 id.botonbola = game.add.sprite(1040, 360, 'bebola');
             break;
+            case Castillo:
+                id.bola = game.add.sprite(1100, 395, 'horse');
+                var rodar = id.bola.animations.add('rodar');
+                game.physics.enable(id.bola, Phaser.Physics.ARCADE);
+                id.bola.body.immovable = true;
+                id.bola.body.allowGravity = false;
+                //crear aceite de punta
+                id.aceite1 = game.add.sprite(520,-90, 'aceite');
+                game.physics.enable(id.aceite1, Phaser.Physics.ARCADE);
+                id.aceite1.body.immovable = true;
+                id.aceite1.body.allowGravity = false;
+                //crear penguinos
+                id.p1 = game.add.sprite(-50,130, 'flecha');
+                game.physics.enable(id.p1, Phaser.Physics.ARCADE);
+                id.p1.body.immovable = true;
+                id.p1.body.allowGravity = false;
+                id.p2 = game.add.sprite(-150,130, 'flecha');
+                game.physics.enable(id.p2, Phaser.Physics.ARCADE);
+                id.p2.body.immovable = true;
+                id.p2.body.allowGravity = false;
+                id.p3 = game.add.sprite(-250,130, 'flecha');
+                game.physics.enable(id.p3, Phaser.Physics.ARCADE);
+                id.p3.body.immovable = true;
+                id.p3.body.allowGravity = false;
+                //crear botones
+                id.botonflecha = game.add.sprite(1040, 300, 'beelfo');
+                id.botonestalactita = game.add.sprite(1040, 330, 'beaceite');
+                id.botonbola = game.add.sprite(1040, 360, 'becaballero');
+            break;
         }
     }
     trapsHandler(entrada, id){
