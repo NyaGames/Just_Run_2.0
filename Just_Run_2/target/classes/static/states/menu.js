@@ -104,7 +104,7 @@ JustRun.menu.prototype = {
 			case 2:
 			break;
 			case 3:
-				
+				game.state.start("opciones");
 			break;
             case 4:
                 game.state.start("ayuda");

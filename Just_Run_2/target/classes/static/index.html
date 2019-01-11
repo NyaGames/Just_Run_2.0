@@ -23,6 +23,7 @@
         <script src="states/matchmaking.js"></script>
         <script src="states/tutorial.js"></script>
         <script src="states/ayuda.js"></script>
+        <script src="states/opciones.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <style type="text/css">
          	#Just_Run{
@@ -39,6 +40,7 @@
 
         game.state.add('boot', JustRun.bootState,true);
         game.state.add('ayuda', JustRun.ayudaState, true);
+        game.state.add('opciones', JustRun.opcionesState, true);
         game.state.add('tutorial', JustRun.tutorialState, true);
         game.state.add('matchmaking', JustRun.matchmakingState, true);
         game.state.add('cargaMenu', JustRun.cargaMenu, true);

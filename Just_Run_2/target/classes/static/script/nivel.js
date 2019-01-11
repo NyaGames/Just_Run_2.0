@@ -17,6 +17,9 @@ class Nivel{
             case Tutorial:
             	id.background = game.add.sprite(0,0, 'tutorial');
             break;
+            case Opciones:
+            	id.background = game.add.sprite(0,0, 'OFF');
+            break;
             case Nieve:
 	            id.width = 1068;
 	            id.height = 600;
