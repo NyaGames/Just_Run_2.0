@@ -200,6 +200,17 @@ class Trampas{
             this.Seguimiento(id);
         }
     }
+    fantasma(I, O, P, id){
+    	if(I && !this.I){
+            this.Rodante(id);
+        }
+        if(O && !this.O){
+            this.Caida(id);
+        }
+        if(P && !this.P){
+            this.Seguimiento(id);
+        }
+    }
     async Rodante(id){
     	audio.rodacionar();
         this.I = true;

@@ -66,7 +66,8 @@ ws.onmessage = function (message) {
         	}
         	break;
         case 107:
-            //Nieve.mover(escapist, msg.x, msg.y);
+            Nieve.mover(Nieve.escapist, msg.x, msg.y);
+            trampas.fantasma(msg.I, msg.O, msg.P, Nieve);
         	break;
         case 108:
         	Nieve.mover(Nieve.chaser, msg.x, msg.y);
@@ -85,10 +86,10 @@ ws.onmessage = function (message) {
         	break;
         case 121:
         	audio.stop();
-        	game.state.start();
+        	game.state.start("VC");
         	break;
         case 122:
         	audio.stop();
-        	game.state.start();
+        	game.state.start("VE");
     }
 }

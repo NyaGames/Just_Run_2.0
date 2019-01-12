@@ -6,6 +6,9 @@ public class Player {
 	private int x, y;
 	private int score;
 	private boolean cazado;
+	private boolean I;
+	private boolean O;
+	private boolean P;
 
 	Player() {
 		this.score = 0;
@@ -53,6 +56,24 @@ public class Player {
 	}
 	public void setCazado(boolean c) {
 		this.cazado = c;
+	}
+	public boolean getI() {
+		return I;
+	}
+	public void setI(boolean c) {
+		this.I = c;
+	}
+	public boolean getO() {
+		return O;
+	}
+	public void setO(boolean c) {
+		this.O = c;
+	}
+	public boolean getP() {
+		return P;
+	}
+	public void setP(boolean c) {
+		this.P = c;
 	}
 	@Override
 	public String toString() {

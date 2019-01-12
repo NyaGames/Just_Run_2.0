@@ -130,16 +130,21 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 				json.put("score", chaser.getScore());
 				session.sendMessage(new TextMessage(json.toString()));
 				break;
-			case "LEVELCHASER":
-				/*final Iterator<Player> itr = players.iterator();
+			case "NIEVECHASER":
+				final Iterator<Player> itr = players.iterator();
 		        Player lastElement = itr.next();
 		        while(itr.hasNext()) {
 		        	lastElement=itr.next();
 		        }
 		        escapist = lastElement;
-				escapist.setX(node.get("x").asInt());
-				escapist.setY(node.get("y").asInt());
-				System.out.println(escapist.toString());*/
+		        json.put("type", 'k');
+				json.put("x", escapist.getX());
+				json.put("y", escapist.getY());
+				json.put("score", escapist.getScore());
+				json.put("I", escapist.getI());
+				json.put("O", escapist.getO());
+				json.put("P", escapist.getP());
+				session.sendMessage(new TextMessage(json.toString()));
 				break;
 			case "CHASER":
 				players = gameController.getPlayers();				
@@ -159,6 +164,9 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 		        escapist = lastelement;
 				escapist.setX(node.get("x").asInt());
 				escapist.setY(node.get("y").asInt());
+				escapist.setI(node.get("I").asBoolean());
+				escapist.setO(node.get("O").asBoolean());
+				escapist.setP(node.get("P").asBoolean());
 				break;
 			case "FINALE":
 				chaser = players.iterator().next();

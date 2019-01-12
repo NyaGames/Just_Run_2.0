@@ -13,6 +13,7 @@ JustRun.nivelNieve.prototype = {
         Nieve.crearChaser(Nieve)
         Nieve.crearEscapist(Nieve)   
         entrada = new Entrada();
+        timer.initTimer();
         audio.loop();
     },
     update: function(){
@@ -25,7 +26,7 @@ JustRun.nivelNieve.prototype = {
             Nieve.colisiones(Nieve,Nieve.chaser,Nieve.escapist);
             if(JustRun_userID == 1){
             	data = {
-                    	type: 'LEVELCHASER'
+                    	type: 'NIEVECHASER'
                 }
                 ws.send(JSON.stringify(data));
                 entrada.mover(Nieve.chaser, Nieve);
@@ -39,6 +40,7 @@ JustRun.nivelNieve.prototype = {
                 ws.send(JSON.stringify(data));
             }
             if(JustRun_userID == 2){
+                trampas.trapsHandler(entrada, Nieve);
             	data = {
                     	type: 'NIEVEESCAPIST'
                     }
@@ -48,10 +50,12 @@ JustRun.nivelNieve.prototype = {
                 		type: 'ESCAPIST',
                 		x: Nieve.escapist.position.x,
                 		y: Nieve.escapist.position.y,
+                		I: trampas.I,
+                		O: trampas.O,
+                		P: trampas.P,
                 }
                 ws.send(JSON.stringify(data));
             }
-            trampas.trapsHandler(entrada, Nieve);
             if(Nieve.catched){
             	 data = {
                  		type: 'CHASER',
@@ -68,19 +72,7 @@ JustRun.nivelNieve.prototype = {
             audio.cambio();
             Nieve.chaser.destroy();
             Nieve.escapist.destroy();
-       	 	data = {
-          		type: 'CHASER',
-          		x: 60,
-          		y: 300,
-       	 	}
-       	 	ws.send(JSON.stringify(data));
-       	 	data = {
-         		type: 'ESCAPIST',
-         		x: 1000,
-         		y: 300,
-       	 	}
-       	 	ws.send(JSON.stringify(data));
-            game.state.start("cargaCastillo")
+            game.state.start("cargaNieve")
         }
     },
 }
