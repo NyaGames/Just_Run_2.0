@@ -4,7 +4,7 @@ JustRun.nivelNieve = function(game){
 var Nieve = new Nivel("Nieve");
 var trampas = new Trampas();
 var timer = new Timer();
-var iniciado = false;
+
 JustRun.nivelNieve.prototype = {	
     preload: function(){
         Nieve.crear(Nieve);
@@ -72,7 +72,7 @@ JustRun.nivelNieve.prototype = {
             audio.cambio();
             Nieve.chaser.destroy();
             Nieve.escapist.destroy();
-            game.state.start("cargaNieve")
+            game.state.start("cargaCastillo")
         }
     },
 }

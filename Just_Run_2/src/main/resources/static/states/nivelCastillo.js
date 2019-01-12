@@ -26,7 +26,7 @@ JustRun.nivelCastillo.prototype = {
             Castillo.colisiones(Castillo,Castillo.chaser,Castillo.escapist);
             if(JustRun_userID == 1){
             	data = {
-                    	type: 'LEVELCHASER'
+                    	type: 'CASTILLOCHASER'
                 }
                 ws.send(JSON.stringify(data));
                 entrada.mover(Castillo.chaser, Castillo);
@@ -40,6 +40,7 @@ JustRun.nivelCastillo.prototype = {
                 ws.send(JSON.stringify(data));
             }
             if(JustRun_userID == 2){
+                trampas.trapsHandler(entrada, Castillo);
             	data = {
                     	type: 'CASTILLOESCAPIST'
                     }
@@ -49,10 +50,12 @@ JustRun.nivelCastillo.prototype = {
                 		type: 'ESCAPIST',
                 		x: Castillo.escapist.position.x,
                 		y: Castillo.escapist.position.y,
+                		I: trampas.I,
+                		O: trampas.O,
+                		P: trampas.P,
                 }
                 ws.send(JSON.stringify(data));
             }
-            trampas.trapsHandler(entrada, Castillo);
             if(Castillo.catched){
             	 data = {
                  		type: 'CHASER',

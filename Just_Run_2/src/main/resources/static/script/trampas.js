@@ -262,12 +262,12 @@ class Trampas{
                 id.botonbola = game.add.sprite(1040, 360, 'bebola');
             break;
             case Castillo:
-            	id.bola.position.x = 1100;
+            	id.bola.position.x = 1300;
                 id.bola.body.velocity.x = 0;
                 id.botonbola = game.add.sprite(1040, 360, 'becaballero');
             break;
             case Desierto:
-            	id.bola.position.x = 1100;
+            	id.bola.position.x = 1200;
                 id.bola.body.velocity.x = 0;
                 id.botonbola = game.add.sprite(1040, 360, 'beTW');
             break;

@@ -62,8 +62,24 @@ ws.onmessage = function (message) {
         		if(JustRun_userID == -1){
         			JustRun_userID = 2;
         		}
-        		game.state.start("cargaNieve");
+        		game.state.start("cargaVolcan");
         	}
+        	break;
+        case 102:
+            Volcan.mover(Volcan.escapist, msg.x, msg.y);
+            trampas.fantasma(msg.I, msg.O, msg.P, Volcan);
+        	break;
+        case 104:
+            Oceano.mover(Oceano.escapist, msg.x, msg.y);
+            trampas.fantasma(msg.I, msg.O, msg.P, Oceano);
+        	break;
+        case 105:
+            Desierto.mover(Desierto.escapist, msg.x, msg.y);
+            trampas.fantasma(msg.I, msg.O, msg.P, Desierto);
+        	break;
+        case 106:
+            Castillo.mover(Castillo.escapist, msg.x, msg.y);
+            trampas.fantasma(msg.I, msg.O, msg.P, Castillo);
         	break;
         case 107:
             Nieve.mover(Nieve.escapist, msg.x, msg.y);

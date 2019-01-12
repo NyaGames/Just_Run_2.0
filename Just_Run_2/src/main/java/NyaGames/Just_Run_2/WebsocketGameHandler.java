@@ -146,6 +146,70 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 				json.put("P", escapist.getP());
 				session.sendMessage(new TextMessage(json.toString()));
 				break;
+			case "CASTILLOCHASER":
+				final Iterator<Player> ir = players.iterator();
+		        Player lastElEment = ir.next();
+		        while(ir.hasNext()) {
+		        	lastElEment=ir.next();
+		        }
+		        escapist = lastElEment;
+		        json.put("type", 'j');
+				json.put("x", escapist.getX());
+				json.put("y", escapist.getY());
+				json.put("score", escapist.getScore());
+				json.put("I", escapist.getI());
+				json.put("O", escapist.getO());
+				json.put("P", escapist.getP());
+				session.sendMessage(new TextMessage(json.toString()));
+				break;
+			case "DESIERTOCHASER":
+				final Iterator<Player> i = players.iterator();
+		        Player lastElEMent = i.next();
+		        while(i.hasNext()) {
+		        	lastElEMent=i.next();
+		        }
+		        escapist = lastElEMent;
+		        json.put("type", 'i');
+				json.put("x", escapist.getX());
+				json.put("y", escapist.getY());
+				json.put("score", escapist.getScore());
+				json.put("I", escapist.getI());
+				json.put("O", escapist.getO());
+				json.put("P", escapist.getP());
+				session.sendMessage(new TextMessage(json.toString()));
+				break;
+			case "OCEANOCHASER":
+				final Iterator<Player> ia = players.iterator();
+		        Player lastElEMEnt = ia.next();
+		        while(ia.hasNext()) {
+		        	lastElEMEnt=ia.next();
+		        }
+		        escapist = lastElEMEnt;
+		        json.put("type", 'h');
+				json.put("x", escapist.getX());
+				json.put("y", escapist.getY());
+				json.put("score", escapist.getScore());
+				json.put("I", escapist.getI());
+				json.put("O", escapist.getO());
+				json.put("P", escapist.getP());
+				session.sendMessage(new TextMessage(json.toString()));
+				break;
+			case "VOLCANCHASER":
+				final Iterator<Player> a = players.iterator();
+		        Player lastElEMENt = a.next();
+		        while(a.hasNext()) {
+		        	lastElEMENt=a.next();
+		        }
+		        escapist = lastElEMENt;
+		        json.put("type", 'f');
+				json.put("x", escapist.getX());
+				json.put("y", escapist.getY());
+				json.put("score", escapist.getScore());
+				json.put("I", escapist.getI());
+				json.put("O", escapist.getO());
+				json.put("P", escapist.getP());
+				session.sendMessage(new TextMessage(json.toString()));
+				break;
 			case "CHASER":
 				players = gameController.getPlayers();				
 				chaser = players.iterator().next();

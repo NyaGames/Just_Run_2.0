@@ -26,7 +26,7 @@ JustRun.nivelDesierto.prototype = {
             Desierto.colisiones(Desierto,Desierto.chaser,Desierto.escapist);
             if(JustRun_userID == 1){
             	data = {
-                    	type: 'LEVELCHASER'
+                    	type: 'DESIERTOCHASER'
                 }
                 ws.send(JSON.stringify(data));
                 entrada.mover(Desierto.chaser, Desierto);
@@ -40,6 +40,7 @@ JustRun.nivelDesierto.prototype = {
                 ws.send(JSON.stringify(data));
             }
             if(JustRun_userID == 2){
+                trampas.trapsHandler(entrada, Desierto);
             	data = {
                     	type: 'DESIERTOESCAPIST'
                     }
@@ -49,10 +50,12 @@ JustRun.nivelDesierto.prototype = {
                 		type: 'ESCAPIST',
                 		x: Desierto.escapist.position.x,
                 		y: Desierto.escapist.position.y,
+                		I: trampas.I,
+                		O: trampas.O,
+                		P: trampas.P,
                 }
                 ws.send(JSON.stringify(data));
             }
-            trampas.trapsHandler(entrada, Desierto);
             if(Desierto.catched){
             	 data = {
                  		type: 'CHASER',
